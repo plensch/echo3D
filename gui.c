@@ -1,5 +1,8 @@
 /*
- * FILENAME: echo3d.c
+ * GUI frontend for core.c
+ *
+ * PART OF: echo3d
+ * FILENAME: gui.c
  * AUTHOR: Philipp Lensch
  */
 

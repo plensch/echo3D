@@ -1,6 +1,6 @@
 add sample datasets
-add cli
 multithread core operations
 stream core operations from file to file
 support multiple input / output formats (at least ply and xyz)
 do not write field to output if colors/normals was not selected
+fix: binary still needs IUP in build folder

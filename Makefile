@@ -1,19 +1,25 @@
-CC=tcc
-LDLIBS=-L ./iup/ -I ./iup/include/ 
-CFLAGS=-liupimglib -liup -Wl,-rpath=/usr/lib64/
+CC=gcc
+CFLAGS=-lm
+GUILIBS=-L ./iup/ -I ./iup/include/ 
+GUIFLAGS=-liupimglib -liup -Wl,-rpath=/usr/lib64/
 
-src=$(wildcard *.c)
+src_gui=core.c gui.c
+src_cli=core.c cli.c
 
-.DEFAULT_GOAL=build_gui
+.DEFAULT_GOAL=gui
 
-.PHONY:build_gui
-build_gui:
-	$(CC) $(src) -o echo3d_gui $(LDLIBS) $(CFLAGS)
+.PHONY:gui
+gui:
+	$(CC) $(src_gui) -o echo3d_gui $(GUILIBS) $(GUIFLAGS) $(CFLAGS)
+
+.PHONY:cli
+cli:
+	$(CC) $(src_cli) -o echo3d_cli $(CFLAGS)
 
 .PHONY:run
-run:build_gui
+run:gui
 	./echo3d_gui
 
 .PHONY:clean
 clean:
-	rm echo3d_gui
+	rm -f echo3d_gui echo3d_cli

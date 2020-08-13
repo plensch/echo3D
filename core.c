@@ -1,3 +1,11 @@
+/*
+ * Generates pseudo-normals from multibeam-echosounder point clouds and the echosounder location over time.
+ *
+ * PART OF: echo3d
+ * FILENAME: core.c
+ * AUTHOR: Philipp Lensch
+ */
+
 #include <stdio.h>
 #include <stdlib.h>
 #include <math.h>
