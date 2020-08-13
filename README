@@ -1,0 +1,19 @@
+# echo3D
+Generates pseudo-normals from multibeam-echosounder point clouds and the echosounder location over time.
+Only useful for further surface reconstruction.
+
+Can also color the point cloud by height (Z) and center the point cloud around (0|0|0)
+
+#### Usage
+
+`echo3d pointcloud.asc path.asc out.ply`
+
+`pointcloud.asc` is an ascii file with one point per line and comma-separated x,y,z values. (MB-echosounder point cloud)<br/>
+`path.asc` is an ascii file with one point per line and comma-separated x,y,z values. (location of the MB-echosounder over time)<br/>
+`out.ply` is a polygon file with the generated normal and color information.<br/>
+
+echo3d centers the point cloud around (0|0|0), generates normals and colors it by depth (Z is up).
+
+
+#### Build
+`cc -lm echo3d.c -o echo3d`
