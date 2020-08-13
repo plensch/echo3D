@@ -41,7 +41,7 @@ int cb_run(void)
         status = generateNormals(in, path, out, colors, center, normals);
     }
 
-    IupSetAttribute(lb_status, "TITLE", (status) ? "Fail" : "Success");
+    IupSetAttribute(lb_status, "TITLE", (status) ? "Status: Fail" : "Status: Success");
 
     return IUP_DEFAULT;
 }
@@ -99,7 +99,7 @@ int cb_save(void)
 
 int main(int argc, char **argv)
 {
-    Ihandle *inlabel, *pathlabel, *outlabel; // LABELS
+    Ihandle *inlabel, *pathlabel, *outlabel, *statuslabel; // LABELS
     Ihandle *dlg, *vbox;
     Ihandle *btn_run, *btn_open, *btn_path, *btn_save; // BUTTONS
 
@@ -120,7 +120,8 @@ int main(int argc, char **argv)
     tg_center = IupToggle("Center", NULL);
     tg_normals = IupToggle("Generate Normals", NULL);
     lb_status = IupLabel(NULL);
-    btn_run = IupButton("Run", NULL);
+    statuslabel = IupLabel("Status:");
+    btn_run = IupButton("Run ", NULL);
 
     vbox = IupVbox(inlabel,
                    IupHbox(inpath,btn_open), 
@@ -129,7 +130,7 @@ int main(int argc, char **argv)
                    outlabel,
                    IupHbox(outpath, btn_save),
                    IupHbox(tg_colors,tg_center,tg_normals),
-                   IupHbox(IupLabel("Status:"), lb_status),
+                   lb_status,
                    btn_run,
                    NULL);
 
@@ -145,6 +146,7 @@ int main(int argc, char **argv)
     IupSetAttributes(btn_path, "IMAGE=IUP_FileOpen");
     IupSetAttributes(btn_save, "IMAGE=IUP_FileSave");
     IupSetAttributes(btn_run, "ALIGNMENT=ARIGHT");
+    IupSetAttribute(lb_status, "TITLE", "Status: Inactive");
 
     IupSetCallback(btn_run, "ACTION", (Icallback) cb_run);
     IupSetCallback(btn_open, "ACTION", (Icallback) cb_open);
