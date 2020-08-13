@@ -22,6 +22,6 @@ Download the precompiled binaries from https://www.tecgraf.puc-rio.br/iup/en/dow
 place them in a folder named "iup" in this directory and run `make`.
 
 ##### Make Options
-`make cli` -> `./echo3d_cli`
-`make gui` -> `./echo3d_gui`
+- `make cli` -> `./echo3d_cli`
+- `make gui` -> `./echo3d_gui`
 
